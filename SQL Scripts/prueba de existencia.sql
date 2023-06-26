@@ -1,0 +1,1 @@
+SELECT * FROM `MPasajeros` WHERE 1;
