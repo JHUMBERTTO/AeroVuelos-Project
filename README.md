@@ -1,2 +1,2 @@
 # AeroVuelos-SchoolProject
-Technologies in this project: Java, MySQL, HTML, CSS
+Technologies in this project: Java, MySQL, HTML, CSS, Js
