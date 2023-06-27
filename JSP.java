@@ -58,15 +58,17 @@ class UpdateBD  extends InterBD {
         super();
     }
 
-    public int RegistrarVuelos () {
+    public int RegistrarVuelo () {
 
         try {
             
             abrirCX(cx);
 
-            st = cx.prepareStatement("INSERT INTO ");
+            st = cx.prepareStatement("INSERT INTO `MVuelos`(`cod_cue`, `ori_vue`, `des_vue`, `dia_vue`, `nda_vue`) VALUES ('?', '?', '?', '?', '?');");
 
-            st.executeUpdate(driver);
+            st.execute();
+
+            cerrar();
 
             return 1;
 
