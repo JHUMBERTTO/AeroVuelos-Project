@@ -8,7 +8,6 @@ body{
 .Header{
     height: 80px;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .Header-nav{
@@ -19,7 +18,7 @@ body{
     position: fixed;
     width: 100%; 
     z-index: 99;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(121, 121, 121);
 }
 
 
@@ -101,14 +100,21 @@ body{
 
 
 .Main{
-    height: 100%;
+    height: 800px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .Main-container-center{
     height: 650px;
     width: 1200px;
-    background-color: black;
+    border-radius: 20px;
+    background-color: #F6B47F;
+    -webkit-box-shadow: 3px 4px 7px 0px rgba(0,0,0,0.32);
+    -moz-box-shadow: 3px 4px 7px 0px rgba(0,0,0,0.32);
+    box-shadow: 3px 4px 7px 0px rgba(0,0,0,0.32);
 }
 
 .Main-container-title{

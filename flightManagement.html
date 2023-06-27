@@ -33,23 +33,53 @@
     </header>
     <main class="Main">
         <div  class="Main-container-center">
-            <div class="Main-container-title">
-
-            </div>
+            <h1 class="Main-container-title">
+                Administrar Vuelos
+            </h1>
             <form class="Main-container-form" action="">
-                
+                <label for="">Codigo del vuelo</label>
+                <input type="text">
+                <label for="">Origen del vuelo</label>
+                <input type="text">
+                <label for="">Destino del vuelo</label>
+                <input type="text">
+                <label for="">Salida del vuelo</label>
+                <input type="text">
+                <label for="">Numero de asientos del vuelo</label>
+                <input type="text"> 
             </form>
             <div class="Main-container-buttons">
-
+                <button>Guardar</button>
+                <button>Editar</button>
+                <button>Borrar</button>
             </div>
             <table class="Main-container-table">
-
+                <thead>
+                    <tr>
+                        <th>Codigo del vuelo</th>
+                        <th>Origen del vuelo</th>
+                        <th>Destino del vuelo</th>
+                        <th>Salida del vuelo</th>
+                        <th>Num de asientos del vuelo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DX254SDA</td>
+                        <td>CDMX</td>
+                        <td>Culiacan</td>
+                        <td>1-may-2024</td>
+                        <td>120</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
+    </main>
+    <footer>
         <div class="Main-container-bottom">
             <button class="Main-bottom-button" >Regresar</button>
         </div>
-    </main>
+    </footer>
 </body>
 
 </html>
