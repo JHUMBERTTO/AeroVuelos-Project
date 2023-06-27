@@ -6,15 +6,13 @@ class JSP {
 
 abstract class InterBD {
 
-    public int abrirCX (Statement stat) {
+    public int abrirCX (Connection con) {
 
         try {
             
             Class.forName(driver);
 
-            cx = DriverManager.getConnection(url, user, password);
-
-            stat = cx.createStatement();
+            con = DriverManager.getConnection(url, user, password);
 
             return 1;
 
@@ -33,7 +31,7 @@ abstract class InterBD {
             
             cx.close();
 
-            return 1
+            return 1;
             
         } catch (Exception e) {
             
@@ -50,7 +48,7 @@ abstract class InterBD {
     url = "jdbc:mysql://localhost:3306/reg@losdb";
 
     protected Connection cx;
-    protected Statement st;
+    protected PreparedStatement st;
 
 }
 
@@ -64,7 +62,13 @@ class UpdateBD  extends InterBD {
 
         try {
             
-            abrirCX(st);
+            abrirCX(cx);
+
+            st = cx.prepareStatement("INSERT INTO ");
+
+            st.executeUpdate(driver);
+
+            return 1;
 
         } catch (Exception e) {
             
