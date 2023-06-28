@@ -14,11 +14,11 @@ class JSP {
         System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo_2", "Origen", "Destino", "2023-01-01", "1"));
         */
 
-        //Prueba de select
+        //Prueba de ConsultarCodVuelo
 
         ConsultaBD consulta = new ConsultaBD();
 
-        ResultSet ids = consulta.ConsultarIDVuelos();
+        ResultSet ids = consulta.ConsultarCodVuelos();
 
         try {
             
@@ -41,7 +41,27 @@ class JSP {
         }
 
         consulta.cerrar();
-        
+
+        //Prueba de ConsultarVuelo
+        ResultSet result = consulta.consultarVuelo("Codigo");
+
+        try {
+            result.next();
+            
+            System.out.println("El código de vuelo es " + result.getString("cod_vue"));
+            System.out.println("El código de vuelo es " + result.getString("ori_vue"));
+            System.out.println("El código de vuelo es " + result.getString("des_vue"));
+            System.out.println("El código de vuelo es " + result.getString("dia_vue"));
+            System.out.println("El código de vuelo es " + result.getString("nda_vue"));
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL IMPRIMIR EL VUELO");
+
+        }
+
+        consulta.cerrar();
+
     }
     
 }
@@ -115,6 +135,8 @@ abstract class InterBD {
  * ¿Quizá convenga hacer una clase para cada una de las ventanas de la aplicación, que sólo
  * implemente los métodos necesarios en cada página? Eso ahorraría líneas y lo haría todo mucho
  * más sencillo.
+ * 
+ * Aunque claro, eso sólo si se implementan más ventanas de la app...
  */
 class UpdateBD  extends InterBD {
 
@@ -188,7 +210,82 @@ class ConsultaBD extends InterBD {
 
     }
 
-    public ResultSet ConsultarIDVuelos() {
+    //Consulta los códigos de vuelo existentes en BD
+    public ResultSet ConsultarCodVuelos() {
+
+        try {
+            
+            try {
+
+                Class.forName(driver);
+
+                cx = DriverManager.getConnection(url, user, password);
+
+                System.out.println("CONEXIÓN ESTABLECIDA");
+
+            } catch (Exception e) {
+
+                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
+
+            }
+
+            st = cx.createStatement();
+
+            ResultSet result = st.executeQuery("SELECT cod_vue FROM `MVuelos`;");
+
+            System.out.println("QUERY EJECUTADO CORRECTAMENTE");
+
+            return result;
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL HACER EL QUERY");
+            System.out.println(e.getMessage());
+            return null;
+
+        }
+
+    }
+
+    //Consulta un vuelo específico
+    public ResultSet consultarVuelo (String cod_vue) {
+
+        try {
+            
+            try {
+
+                Class.forName(driver);
+
+                cx = DriverManager.getConnection(url, user, password);
+
+                System.out.println("CONEXIÓN ESTABLECIDA");
+
+            } catch (Exception e) {
+
+                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
+
+            }
+
+            st = cx.createStatement();
+
+            ResultSet result = st.executeQuery("SELECT * FROM `MVuelos` WHERE cod_vue = '" + cod_vue + "';");
+
+            System.out.println("QUERY EJECUTADO CORRECTAMENTE");
+
+            return result;
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL HACER EL QUERY");
+            System.out.println(e.getMessage());
+            return null;
+
+        }
+
+    }
+
+    //Consulta TODOS los vuelos
+    public ResultSet consultarVuelo () {
 
         try {
             
