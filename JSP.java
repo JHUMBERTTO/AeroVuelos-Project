@@ -11,7 +11,9 @@ class JSP {
         /*
         UpdateBD prueba = new UpdateBD();
         
-        System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo_2", "Origen", "Destino", "2023-01-01", "1"));
+        System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo_3", "Origen", "Destino", "2023-02-02", "2"));
+
+        System.out.println("/////////TERMINA PRUEBA RegistrarVuelo////////////////");
         */
 
         //Prueba de ConsultarCodVuelo
@@ -42,8 +44,10 @@ class JSP {
 
         consulta.cerrar();
 
+        System.out.println("/////TERMINA PRUEBA ConsultarCodVUelos//////");
+
         //Prueba de ConsultarVuelo
-        ResultSet result = consulta.consultarVuelo("Codigo");
+        ResultSet result = consulta.consultarVuelo("Codigo_3");
 
         try {
             result.next();
@@ -61,6 +65,38 @@ class JSP {
         }
 
         consulta.cerrar();
+
+        System.out.println("/////TERMINA PRUEBA ConsultarVuelo/////////");
+
+        //Prueba de ConsultarVuelo - todos los vuelos
+        result = consulta.consultarVuelo();
+
+        try {
+
+            int contador = 0;
+            while (result.next()) {
+                contador ++;
+
+                System.out.println("Imprimendo fila " + contador);
+                
+                System.out.println("El código de vuelo es " + result.getString("cod_vue"));
+                System.out.println("El código de vuelo es " + result.getString("ori_vue"));
+                System.out.println("El código de vuelo es " + result.getString("des_vue"));
+                System.out.println("El código de vuelo es " + result.getString("dia_vue"));
+                System.out.println("El código de vuelo es " + result.getString("nda_vue"));
+
+            }
+            
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL IMPRIMIR LOS VUELOS");
+
+        }
+
+        consulta.cerrar();
+
+        System.out.println("/////TERMINA PRUEBA ConsultarVuelo - todos/////////");
 
     }
     
