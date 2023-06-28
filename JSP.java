@@ -6,7 +6,8 @@ class JSP {
         
         UpdateBD prueba = new UpdateBD();
         
-        System.out.println(prueba.RegistrarVuelo("Codigo", "Origen", "Destino", "00/00/0000", 1));
+        System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo", "Origen", "Destino", "2023-01-01", "1"));
+
         
     }
     
@@ -21,6 +22,8 @@ abstract class InterBD {
             Class.forName(driver);
 
             con = DriverManager.getConnection(url, user, password);
+
+            System.out.println("CONEXIÓN ESTABLECIDA");
 
             return 1;
 
@@ -38,12 +41,13 @@ abstract class InterBD {
         try {
             
             cx.close();
+            System.out.println("CONEXIÓN CERRADA");
 
-            return 1;
+            return 2;
             
         } catch (Exception e) {
             
-            return -1;
+            return -2;
 
         }
 
@@ -56,7 +60,7 @@ abstract class InterBD {
     url = "jdbc:mysql://localhost:3306/didesaa";
 
     protected Connection cx;
-    protected PreparedStatement st;
+    protected Statement st;
 
 }
 
@@ -66,29 +70,58 @@ class UpdateBD  extends InterBD {
         super();
     }
 
-    public int RegistrarVuelo (String cod_vue, String ori_vue,  String des_vue,  String dia_vue, int nda_vue) {
+    public int RegistrarVuelo (String cod_vue, String ori_vue,  String des_vue,  String dia_vue, String nda_vue) {
+
+        
 
         try {
-            
-            abrirCX(cx);
 
-            st = cx.prepareStatement("INSERT INTO `MVuelos`(`cod_vue`, `ori_vue`, `des_vue`, `dia_vue`, `nda_vue`) VALUES ('?', '?', '?', '?', '?');");
             
+            try {
+            
+                Class.forName(driver);
+
+                cx = DriverManager.getConnection(url, user, password);
+
+                System.out.println("CONEXIÓN ESTABLECIDA");
+
+            } catch (Exception e) {
+
+                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
+
+            }
+
+            /*
+            st = cx.prepareStatement("INSERT INTO `MVuelos`(`cod_vue`, `ori_vue`, `des_vue`, `dia_vue`, `nda_vue`) VALUES (?, ?, ?, ?, ?);");
+            
+            
+
             st.setString(1, cod_vue);
             st.setString(2, ori_vue);
             st.setString(3, des_vue);
             st.setString(4, dia_vue);
-            st.setInt(5, nda_vue);
+            st.setString(5, nda_vue);
 
             st.execute();
+            */
 
-            cerrar();
+            st = cx.createStatement();
 
-            return 1;
+            st.executeUpdate("INSERT INTO `MVuelos`(`cod_vue`, `ori_vue`, `des_vue`, `dia_vue`, `nda_vue`) VALUES ('" + cod_vue + "', '" + ori_vue + "', '" + des_vue + "', '" + dia_vue + "', '" + nda_vue + "');");
+
+            System.out.println("UPDATE EJECUTADA CORRECTAMENTE");
+
+            int resultadoCerrar = cerrar();
+
+            System.out.println("Código de resultado cerrar conexión: " + resultadoCerrar);
+
+            return 3;
 
         } catch (Exception e) {
             
-            return -1;
+            System.out.println("ERROR AL HACER EL UPDATE");
+            System.out.println(e.getMessage());
+            return -3;
 
         }
 
