@@ -1,18 +1,52 @@
 import java.sql.*;
 
+
+//Clase con la única finalidad de probar todo el asunto
 class JSP {
 
     public static void main(String args[]) {
         
+        //Prueba de update
+
+        /*
         UpdateBD prueba = new UpdateBD();
         
-        System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo", "Origen", "Destino", "2023-01-01", "1"));
+        System.out.println("EL RESULTADO ES DE " + prueba.RegistrarVuelo("Codigo_2", "Origen", "Destino", "2023-01-01", "1"));
+        */
 
+        //Prueba de select
+
+        ConsultaBD consulta = new ConsultaBD();
+
+        ResultSet ids = consulta.ConsultarIDVuelos();
+
+        try {
+            
+            int contador = 0;
+
+            while (ids.next()) {
+
+                contador++;
+
+                System.out.println("ID: " + ids.getString(1) + " Número: " + contador);
+
+                
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL IMPRIMIR LOS DATOS");
+            System.out.println(e.getMessage());
+
+        }
+
+        consulta.cerrar();
         
     }
     
 }
 
+//Clase abstracta de la que heredan las otras. Para ahorrar líneas, básicamente.
 abstract class InterBD {
 
     public int abrirCX (Connection con) {
@@ -43,9 +77,13 @@ abstract class InterBD {
             cx.close();
             System.out.println("CONEXIÓN CERRADA");
 
+            System.out.println("Código de resultado cerrar conexión: " + 2);
+
             return 2;
             
         } catch (Exception e) {
+
+            System.out.println("Código de resultado cerrar conexión: " + -2);
             
             return -2;
 
@@ -53,6 +91,12 @@ abstract class InterBD {
 
     }
 
+    /*
+     * Datos de la base de datos creada en la pc local de Iván. Si quieres usar el código,
+     * créate tu propia base de datos en tu pc utilizando el archivo DIDESAABD.mwb, y coloca
+     * aquí los datos relacionados la nombre de la base que decidas, así como tu contraseña de
+     * mySQL y tu usuario.
+     */
     protected String 
     password = "1Lapassword-",
     driver = "com.mysql.cj.jdbc.Driver", 
@@ -64,6 +108,14 @@ abstract class InterBD {
 
 }
 
+//Clase que hace updates a BD
+
+/*
+ * 
+ * ¿Quizá convenga hacer una clase para cada una de las ventanas de la aplicación, que sólo
+ * implemente los métodos necesarios en cada página? Eso ahorraría líneas y lo haría todo mucho
+ * más sencillo.
+ */
 class UpdateBD  extends InterBD {
 
     public UpdateBD () {
@@ -113,8 +165,6 @@ class UpdateBD  extends InterBD {
 
             int resultadoCerrar = cerrar();
 
-            System.out.println("Código de resultado cerrar conexión: " + resultadoCerrar);
-
             return 3;
 
         } catch (Exception e) {
@@ -122,6 +172,53 @@ class UpdateBD  extends InterBD {
             System.out.println("ERROR AL HACER EL UPDATE");
             System.out.println(e.getMessage());
             return -3;
+
+        }
+
+    }
+
+}
+
+//Clase para realizar consultas a BD, básicamente, recuperar datos.
+class ConsultaBD extends InterBD {
+
+    public ConsultaBD () {
+
+        super();
+
+    }
+
+    public ResultSet ConsultarIDVuelos() {
+
+        try {
+            
+            try {
+
+                Class.forName(driver);
+
+                cx = DriverManager.getConnection(url, user, password);
+
+                System.out.println("CONEXIÓN ESTABLECIDA");
+
+            } catch (Exception e) {
+
+                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
+
+            }
+
+            st = cx.createStatement();
+
+            ResultSet result = st.executeQuery("SELECT * FROM `MVuelos`;");
+
+            System.out.println("QUERY EJECUTADO CORRECTAMENTE");
+
+            return result;
+
+        } catch (Exception e) {
+            
+            System.out.println("ERROR AL HACER EL QUERY");
+            System.out.println(e.getMessage());
+            return null;
 
         }
 
