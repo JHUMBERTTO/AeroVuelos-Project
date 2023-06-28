@@ -221,7 +221,7 @@ class UpdateBD  extends InterBD {
 
             System.out.println("UPDATE EJECUTADA CORRECTAMENTE");
 
-            int resultadoCerrar = cerrar();
+            cerrar();
 
             return 3;
 

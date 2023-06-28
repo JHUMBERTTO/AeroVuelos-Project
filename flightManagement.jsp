@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +28,7 @@
             </div>
             <div class="Header-container-right">
                 <a href="">
-                    <button class="Header-button-registrar" >Registrar</button>
+                    <button class="Header-button-registrar">Registrar</button>
                 </a>
             </div>
         </nav>
@@ -75,6 +77,8 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        <!--El contenido (tbody) de genera con jsp-->
                         <tr>
                             <td>DX254SDA</td>
                             <td>CDMX</td>
