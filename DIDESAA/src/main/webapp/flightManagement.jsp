@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jirge Airline</title>
+    <title>Registrar vuelo - AeroVuelos</title>
     <link rel="stylesheet" href="FlightManagement.css">
 </head>
 
@@ -38,33 +38,44 @@
             <h1 class="Main-container-title">
                 Administrar vuelos
             </h1>
-            <form class="Main-container-form" action="">
+            
+            <!--Formulario-->
+            <form class="Main-container-form" action="SvRegistrarVuelo">
+                
                 <div class="Main-container-div">
                     <label class="Main-container-form-label" for="">Codigo del vuelo</label>
-                    <input class="Main-container-form-input" type="text">
+                    <input class="Main-container-form-input" type="text" name="cod_vue">
                 </div>
+                
                 <div class="Main-container-div">
                     <label class="Main-container-form-label" for="">Origen del vuelo</label>
-                    <input class="Main-container-form-input" type="text">
+                    <input class="Main-container-form-input" type="text" name="ori_vue">
                 </div>
+                
                 <div class="Main-container-div">
                     <label class="Main-container-form-label" for="">Destino del vuelo</label>
-                    <input class="Main-container-form-input" type="text">
+                    <input class="Main-container-form-input" type="text" name="des_vue">
                 </div>
+                
                 <div class="Main-container-div">
                     <label class="Main-container-form-label" for="">Salida del vuelo</label>
-                    <input class="Main-container-form-input" type="date">
+                    <input class="Main-container-form-input" type="date" name="dia_vue">
                 </div>
+                
                 <div class="Main-container-div">
                     <label class="Main-container-form-label" for="">Numero de asientos del vuelo</label>
-                    <input class="Main-container-form-input" type="number"> 
+                    <input class="Main-container-form-input" type="number" name="nda_vue"> 
                 </div>
+                
+                    <div class="Main-container-div-buttons">
+                    <button class="Main-container-buttons">Guardar</button>
+                    <button class="Main-container-buttons">Editar</button>
+                    <button class="Main-container-buttons">Borrar</button>
+                </div>
+                
             </form>
-            <div class="Main-container-div-buttons">
-                <button class="Main-container-buttons">Guardar</button>
-                <button class="Main-container-buttons">Editar</button>
-                <button class="Main-container-buttons">Borrar</button>
-            </div>
+            
+            
             <div class="Main-container-table">
                 <table>
                     <thead>
