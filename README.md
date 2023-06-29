@@ -1,2 +1,10 @@
-# Back
-Rama para llevar track del avance en cuanto a conexión a BD y funcionalidad de creación de código HTML de forma dinámica en servidor usando JSP.
+# AeroVuelos project
+
+Technologies in this project: Java, MySQL, HTML, CSS, Js
+
+Funciona, al fin. Está feo, pero es lo que hay \(ツ)/
+
+私たちは
+
+- Iván Gálvez Rodríguez
+- Jorge Humberto García Lizárraga
