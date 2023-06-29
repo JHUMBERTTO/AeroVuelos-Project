@@ -373,13 +373,40 @@ class ConsultaBD extends InterBD {
                         <tbody>
 
                             <!--El contenido (tbody) de genera con jsp-->
-                            <tr>
-                                <td>DX254SDA</td>
-                                <td>CDMX</td>
-                                <td>Culiacan</td>
-                                <td>1-may-2024</td>
-                                <td>120</td>
-                            </tr>
+                            
+                            <%
+                                
+                            ConsultaBD consulta = new ConsultaBD();
+                            
+                            
+                            ResultSet vuelos = consulta.consultarVuelo();
+                            
+                            while (vuelos.next()) {
+                            
+                                out.println("<tr>");
+                                out.println("<td>");
+                                out.println(vuelos.getString(1));
+                                out.println("</td>");
+                                out.println("<td>");
+                                out.println(vuelos.getString(2));
+                                out.println("</td>");
+                                out.println("<td>");
+                                out.println(vuelos.getString(3));
+                                out.println("</td>");
+                                out.println("<td>");
+                                out.println(vuelos.getString(4));
+                                out.println("</td>");
+                                out.println("<td>");
+                                out.println(vuelos.getString(5));
+                                out.println("</td>");
+                                out.println("</tr>");
+                            
+                                }
+                                
+                                consulta.cerrar();
+
+                             %>
+                            
                         </tbody>
                     </table>
                 </div>
