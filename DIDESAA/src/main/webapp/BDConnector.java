@@ -3,7 +3,7 @@ import java.sql.*;
 /*
 * INSTRUCCIONES
 *
-* Para realizar un Update a BD, usa la clase UpdateBD, que incluye el método RegistrarVuelo
+* Para realizar un Update a BD, usa la clase UpdateBD, que incluye el método registrarVuelo
 * Se solicitan los sigueintes datos:
 * - cod_vue
 * - ori_vue
@@ -194,7 +194,7 @@ class UpdateBD  extends InterBD {
         super();
     }
 
-    public int RegistrarVuelo (String cod_vue, String ori_vue,  String des_vue,  String dia_vue, String nda_vue) {
+    public int registrarVuelo (String cod_vue, String ori_vue,  String des_vue,  String dia_vue, String nda_vue) {
         try {
 
             try {

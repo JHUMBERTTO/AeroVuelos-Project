@@ -24,6 +24,8 @@ public class SvRegistrarVuelo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        System.out.println("EJECUCIÓN");
+        
     }
 
     /**
@@ -38,11 +40,26 @@ public class SvRegistrarVuelo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String cod_vue = request.getParameter("cod_vue");
+        System.out.println("EJECUCIÓN");
+        
+        String 
+                cod_vue = request.getParameter("cod_vue"),
+                ori_vue = request.getParameter("ori_vue"),
+                des_vue = request.getParameter("des_vue"),
+                dia_vue = request.getParameter("dia_vue"),
+                nda_vue = request.getParameter("nda_vue");
         
             UpdateBD conexion = new UpdateBD();
             
+            System.out.println(cod_vue);
+            System.out.println(ori_vue);
+            System.out.println(des_vue);
+            System.out.println(dia_vue);
+            System.out.println(nda_vue);
             
+            int resultado = conexion.registrarVuelo(cod_vue, ori_vue, des_vue, dia_vue, nda_vue);
+            
+            System.out.println("El resultado del registro es " + resultado);
         
     }
 
@@ -53,6 +70,7 @@ public class SvRegistrarVuelo extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
+        System.out.println("EJECUCIÓN");
         return "Short description";
     }// </editor-fold>
 

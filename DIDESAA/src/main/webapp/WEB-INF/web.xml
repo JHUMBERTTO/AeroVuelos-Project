@@ -9,6 +9,26 @@
         </session-timeout>
     </session-config>
     
+    <!-- Configuración para habilitar el soporte de JSP -->
+    <servlet>
+        <servlet-name>JSPServlet</servlet-name>
+        <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+        <init-param>
+            <param-name>compilerSourceVM</param-name>
+            <param-value>1.8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>compilerTargetVM</param-name>
+            <param-value>1.8</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SvRegistrarVuelo</servlet-name>
+        <url-pattern>*.java</url-pattern>
+    </servlet-mapping>
+    
     <welcome-file-list>
         <welcome-file>flightManagement.jsp</welcome-file>
     </welcome-file-list>
