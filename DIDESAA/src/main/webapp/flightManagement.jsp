@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*"%>
+<%@ page import="conexionBD.*"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,8 +98,6 @@
                             <%
                                 
                             ConsultaBD consulta = new ConsultaBD();
-                            
-                            
                             ResultSet vuelos = consulta.consultarVuelo();
                             
                             while (vuelos.next()) {
