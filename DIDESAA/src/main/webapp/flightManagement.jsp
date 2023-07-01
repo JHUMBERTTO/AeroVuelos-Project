@@ -100,6 +100,8 @@
                             ConsultaBD consulta = new ConsultaBD();
                             ResultSet vuelos = consulta.consultarVuelo();
                             
+                            try {
+                            
                             while (vuelos.next()) {
                             
                                 out.println("<tr>");
@@ -123,6 +125,23 @@
                                 }
                                 
                                 consulta.cerrar();
+                            
+                                } catch (Exception e) {
+                                
+                                System.out.println("ERROR AL IMPRIMIR LOS RESULTADOS");
+                                
+                                out.println("<tr>");
+                                
+                                out.println("<td colspan='5'>");
+                                
+                                out.println("<p>¡No hay vuelos para mostrar!</p>");
+                                
+                                out.println("</td>");
+                                
+                                out.println("</tr>");
+                                
+                                }
+                            
 
                              %>
                             
