@@ -97,6 +97,30 @@
                             //Creación del array que contendrá los objetos sobre los datos de cada vuelo
                             const infoElementos = [];
                         </script>
+                        
+                        <!--JSP que registra vuelos-->
+                        <%
+                    
+                            System.out.println("Hola!");
+                            try {
+                
+                            String cod_vue = request.getParameter("cod_vue");
+                            String ori_vue = request.getParameter("ori_vue");
+                            String des_vue = request.getParameter("des_vue");
+                            String dia_vue = request.getParameter("dia_vue");
+                            String nda_vue = request.getParameter("nda_vue");
+                    
+                            RegistroBD registrar = new RegistroBD();
+                
+                            registrar.registrarVuelo(cod_vue, ori_vue, des_vue, dia_vue, nda_vue);
+                
+                            } catch (Exception e) {
+                    
+                            System.out.println("ERROR AL LEER LOS DATOS DEL REQUEST");
+                    
+                            }
+                            
+                        %>
 
                         <!--El contenido (tbody) de genera con jsp-->
 
@@ -178,29 +202,7 @@
 
                         %>
 
-                        <!--JSP que registra vuelos-->
-                        <%
-                    
-                            System.out.println("Hola!");
-                            try {
-                
-                            String cod_vue = request.getParameter("cod_vue");
-                            String ori_vue = request.getParameter("ori_vue");
-                            String des_vue = request.getParameter("des_vue");
-                            String dia_vue = request.getParameter("dia_vue");
-                            String nda_vue = request.getParameter("nda_vue");
-                    
-                            RegistroBD registrar = new RegistroBD();
-                
-                            registrar.registrarVuelo(cod_vue, ori_vue, des_vue, dia_vue, nda_vue);
-                
-                            } catch (Exception e) {
-                    
-                            System.out.println("ERROR AL LEER LOS DATOS DEL REQUEST");
-                    
-                            }
-                            
-                        %>
+                        
 
                         </tbody>
                     </table>
