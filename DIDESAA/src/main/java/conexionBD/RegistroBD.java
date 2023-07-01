@@ -10,9 +10,9 @@ import java.sql.DriverManager;
  *
  * @author Iván
  */
-public class UpdateBD extends InterBD {
+public class RegistroBD extends InterBD {
     
-    public UpdateBD () {
+    public RegistroBD () {
         super();
     }
 
