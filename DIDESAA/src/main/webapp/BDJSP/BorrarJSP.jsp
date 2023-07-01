@@ -17,7 +17,27 @@
 
         <%
             
+        try {
         
+        String cod_vue = request.getParameter("cod_vue");
+        
+        BorrarBD borrar = new BorrarBD();
+        
+        int resultado = borrar.borrarVuelo(cod_vue);
+        
+        out.println("<p>Resultado de borrar: " + resultado + "</p>");
+        
+        out.println("<p>" + borrar.getTrace() + "</p>");
+        
+        response.sendRedirect("../flightManagement.jsp");
+        
+            } catch (Exception e) {
+            
+            out.println("<p>Borrar falló</p>");
+            
+            out.println("<p>" + e.getMessage() + "</p>");
+            
+            }
         
         %>
 
