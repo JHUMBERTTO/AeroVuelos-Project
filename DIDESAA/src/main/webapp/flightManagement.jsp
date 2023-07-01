@@ -43,7 +43,7 @@
                 </h1>
 
                 <!--Formulario-->
-                <form  action="flightManagement.jsp" method="POST">
+                <form  action="flightManagement.jsp" method="POST" id="formulario">
 
                     <div class="Main-container-form">
                         <div class="Main-container-div">
@@ -74,36 +74,12 @@
 
                     <div class="Main-container-div-buttons">
                         <button class="Main-container-buttons" type="submit">Guardar</button>
-                        <button class="Main-container-buttons">Editar</button>
-                        <button class="Main-container-buttons">Borrar</button>
+                        <button class="Main-container-buttons" id="Editar-button">Editar</button>
+                        <button class="Main-container-buttons" id="Borrar-button">Borrar</button>
                     </div>
 
                 </form>
-
-                <!--JSP que registra vuelos-->
-                <%
-                    
-                    try {
                 
-                    String cod_vue = request.getParameter("cod_vue");
-                    String ori_vue = request.getParameter("ori_vue");
-                    String des_vue = request.getParameter("des_vue");
-                    String dia_vue = request.getParameter("dia_vue");
-                    String nda_vue = request.getParameter("nda_vue");
-                    
-                    RegistroBD registrar = new RegistroBD();
-                
-                    registrar.registrarVuelo(cod_vue, ori_vue, des_vue, dia_vue, nda_vue);
-                
-                    } catch (Exception e) {
-                    
-                    System.out.println("ERROR AL LEER LOS DATOS DEL REQUEST");
-                    
-                    }
-                    
-                %>
-
-
                 <div class="Main-container-table">
                     <table>
                         <thead>
@@ -136,6 +112,10 @@
                             while (vuelos.next()) {
                                 
                             contador++;
+                            
+                            //Ésto crea un objeto para comparar vuelos
+                            
+                            
 
                             //Ésto imprime la tabla
                                     out.println("<tr class='Flight-list-element' id='List-element-" + contador + "'>");
@@ -198,6 +178,30 @@
 
                         %>
 
+                        <!--JSP que registra vuelos-->
+                        <%
+                    
+                            System.out.println("Hola!");
+                            try {
+                
+                            String cod_vue = request.getParameter("cod_vue");
+                            String ori_vue = request.getParameter("ori_vue");
+                            String des_vue = request.getParameter("des_vue");
+                            String dia_vue = request.getParameter("dia_vue");
+                            String nda_vue = request.getParameter("nda_vue");
+                    
+                            RegistroBD registrar = new RegistroBD();
+                
+                            registrar.registrarVuelo(cod_vue, ori_vue, des_vue, dia_vue, nda_vue);
+                
+                            } catch (Exception e) {
+                    
+                            System.out.println("ERROR AL LEER LOS DATOS DEL REQUEST");
+                    
+                            }
+                            
+                        %>
+
                         </tbody>
                     </table>
                 </div>
@@ -214,39 +218,66 @@
     <script>
 
         console.log("El número de elementos es de " + numElementos);
-
         const elementoLista = (numeroElemento) => {
 
             const elemento = document.querySelector("#List-element-" + numeroElemento);
-
             //Aquí la acción al dar click (:
             elemento.addEventListener('click', () => {
 
                 console.log("click en " + numeroElemento);
-
                 //Obteniendo los inputs
                 const codigo = document.getElementById("cod_vue");
                 const origen = document.getElementById("ori_vue");
                 const destino = document.getElementById("des_vue");
                 const salida = document.getElementById("dia_vue");
                 const asientos = document.getElementById("nda_vue");
-
                 codigo.value = infoElementos[numeroElemento - 1].cod_vue;
                 origen.value = infoElementos[numeroElemento - 1].ori_vue;
                 destino.value = infoElementos[numeroElemento - 1].des_vue;
                 salida.value = infoElementos[numeroElemento - 1].dia_vue;
                 asientos.value = infoElementos[numeroElemento - 1].nda_vue;
-
             });
+          };
+          
+        //Función para el botón EDITAR
+         const editar = (elemento) => {
 
-        }
+            elemento.addEventListener('click', () => {
+
+                const form = document.getElementById("formulario");
+
+                form.action = "BDJSP/EditarJSP.jsp";
+
+                form.submit();
+
+                 });
+
+        };
+        
+        //Función para el botón BORRAR
+        const borrar = (elemento) => {
+          
+          elemento.addEventListener('click', () => {
+             
+            const form = document.getElementById("formulario");
+            
+            form.action ="BDJSP/BorrarJSP.jsp";
+            
+          });
+        
+        };
 
         //Asignando la función a cada elemento de la lista
         for (let contador = numElementos; contador > 0; contador--) {
 
-            elementoLista(contador);
-
+        elementoLista(contador);
         }
+
+        //Asignando la función a cada botón
+
+        editar(document.getElementById("Editar-button"));
+        
+        borrar(document.getElementById("Borrar-button"));
 
     </script>
 </html>
