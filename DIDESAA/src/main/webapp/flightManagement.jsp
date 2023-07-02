@@ -136,10 +136,6 @@
                             while (vuelos.next()) {
                                 
                             contador++;
-                            
-                            //Ésto crea un objeto para comparar vuelos
-                            
-                            
 
                             //Ésto imprime la tabla
                                     out.println("<tr class='Flight-list-element' id='List-element-" + contador + "'>");
@@ -223,7 +219,7 @@
         const elementoLista = (numeroElemento) => {
 
             const elemento = document.querySelector("#List-element-" + numeroElemento);
-            //Aquí la acción al dar click (:
+            //Aquí la acción al dar click
             elemento.addEventListener('click', () => {
 
                 console.log("click en " + numeroElemento);
