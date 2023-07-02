@@ -39,6 +39,26 @@ public class Vuelo {
     public String getNda_vue() {
         return nda_vue;
     }
+
+    public void setCod_vue(String cod_vue) {
+        this.cod_vue = cod_vue;
+    }
+
+    public void setOri_vue(String ori_vue) {
+        this.ori_vue = ori_vue;
+    }
+
+    public void setDes_vue(String des_vue) {
+        this.des_vue = des_vue;
+    }
+
+    public void setDia_vue(String dia_vue) {
+        this.dia_vue = dia_vue;
+    }
+
+    public void setNda_vue(String nda_vue) {
+        this.nda_vue = nda_vue;
+    }
     
     private String 
             cod_vue,
