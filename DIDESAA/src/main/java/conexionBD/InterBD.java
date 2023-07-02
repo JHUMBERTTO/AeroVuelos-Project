@@ -58,7 +58,7 @@ public abstract class InterBD {
      * mySQL y tu usuario.
          */
     final protected String 
-            password = "1Lapassword-",
+            password = "",
             driver = "com.mysql.cj.jdbc.Driver",
             user = "root",
             url = "jdbc:mysql://localhost:3306/didesaa";
