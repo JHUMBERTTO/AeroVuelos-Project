@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package conexionBD;
 
 import java.sql.DriverManager;
@@ -32,20 +28,6 @@ public class RegistroBD extends InterBD {
                 System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
 
             }
-
-            /*
-            st = cx.prepareStatement("INSERT INTO `MVuelos`(`cod_vue`, `ori_vue`, `des_vue`, `dia_vue`, `nda_vue`) VALUES (?, ?, ?, ?, ?);");
-            
-            
-
-            st.setString(1, cod_vue);
-            st.setString(2, ori_vue);
-            st.setString(3, des_vue);
-            st.setString(4, dia_vue);
-            st.setString(5, nda_vue);
-
-            st.execute();
-            */
 
             st = cx.createStatement();
 

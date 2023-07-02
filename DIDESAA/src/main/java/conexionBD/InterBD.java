@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package conexionBD;
 
 import java.sql.Connection;
@@ -62,7 +58,7 @@ public abstract class InterBD {
      * mySQL y tu usuario.
          */
     final protected String 
-            password = "1Lapassword-",
+            password = "",
             driver = "com.mysql.cj.jdbc.Driver",
             user = "root",
             url = "jdbc:mysql://localhost:3306/didesaa";
