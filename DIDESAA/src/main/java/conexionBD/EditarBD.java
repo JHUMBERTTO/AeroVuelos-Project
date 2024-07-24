@@ -27,11 +27,11 @@ public class EditarBD extends InterBD {
 
                 cx = DriverManager.getConnection(url, user, password);
 
-                System.out.println("CONEXIÓN ESTABLECIDA");
+                System.out.println("CONEXIÓN ESTABLECIDA CON EXITO");
 
             } catch (Exception e) {
 
-                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN");
+                System.out.println("ERROR AL ESTABLECER LA CONEXIÓN NO TUVIMOS EXITO");
 
             }
             
